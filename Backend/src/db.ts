@@ -1,6 +1,7 @@
 import mongoose,{Schema,model, mongo} from "mongoose";
+import { db_code } from "./config";
 
-mongoose.connect("mongodb+srv://chirag24:Mpf6IAfoTj1j3QZl@cluster0.owmoe.mongodb.net/Brainly-Your-Second-Brain") ;
+mongoose.connect(db_code) ;
 const UserSchema = new Schema({
     username : {type:String, unique:true} ,
     password : {type:String}
