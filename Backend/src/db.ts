@@ -1,4 +1,4 @@
-import mongoose,{Schema,model, mongo} from "mongoose";
+import mongoose,{Schema,model} from "mongoose";
 import { db_code } from "./config";
 
 mongoose.connect(db_code) ;

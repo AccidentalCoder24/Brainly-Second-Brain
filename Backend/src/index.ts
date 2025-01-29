@@ -2,9 +2,10 @@ import express from "express" ;
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken" ;
 // import cors from "cors" ;
-import { UserModel,ContentModel } from "./db";
+import { UserModel,ContentModel, LinkModel } from "./db";
 import { JWT_SECRET } from "./config";
 import {userMiddleware} from "./middleware" ;
+import { random } from "./utils";
 
 const app = express() ;
 app.use(express.json()) ;
@@ -64,8 +65,29 @@ app.delete("/api/v1/content",userMiddleware,async(req,res)=>{
     res.json({message : "Successfully deleted"}) ;
 })
 
-app.post("/api/v1/brain/share",(req,res)=>{
+app.post("/api/v1/brain/share",userMiddleware,async (req,res)=>{
+    const share = req.body.share ;
 
+    if (share){
+        //@ts-ignore
+        const existinguser1 = await LinkModel.findOne({userId : req.userId})
+
+        if (existinguser1){
+            res.json({existinguser1}) ;
+            return ;
+        }
+
+        const hash = random(11) ;
+        //@ts-ignore
+        await LinkModel.create({userId:req.userId , hash}) ;
+
+        res.json({hash}) ;
+    } else {
+        //@ts-ignore
+        await LinkModel.deleteOne({userId : req.userId}) ;
+
+        res.json({message : "Deleted Link"}) ;
+    }
 })
 
 app.post("/api/v1/brain/:shareLink",(req,res)=>{
