@@ -18,7 +18,7 @@ const defaultStyles = "px-4 h-10 rounded-md font-medium flex items-center justif
 
 export function Button({ variant, text, startIcon, onClick, fullWidth, loading }: ButtonProps) {
     return (
-        <button 
+        <button  
             onClick={onClick} 
             className={`${variantClasses[variant]} ${defaultStyles} ${fullWidth ? "w-full" : ""} ${loading ? "opacity-50 cursor-not-allowed" : ""}`} 
             disabled={loading} 
