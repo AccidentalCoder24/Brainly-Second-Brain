@@ -8,7 +8,7 @@ interface ButtonProps {
     fullWidth?: boolean; 
     loading?: boolean; 
 }
-
+ 
 const variantClasses = {
     "primary": "bg-[#4F46E5] text-white hover:bg-[#4338CA]", 
     "secondary": "bg-[#E0E7FF] text-[#3730A3] hover:bg-[#C7D2FE]", 
@@ -27,5 +27,5 @@ export function Button({ variant, text, startIcon, onClick, fullWidth, loading }
             {text}
         </button>
     );
-} //57:25/02:02:57
+} 
 

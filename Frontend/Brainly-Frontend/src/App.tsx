@@ -1,26 +1,23 @@
-import { Button } from "./components/ui/Button"
-import { CrossIcon } from "./Icons/CrossIcon"
-import { Logo } from "./Icons/Logo"
-import { PlusIcon } from "./Icons/PlusIcon"
-import { ShareIcon } from "./Icons/ShareIcon"
-import { TwitterIcon } from "./Icons/TwitterIcon"
-import { YoutubeIcon } from "./Icons/YoutubeIcon"
+import { Button } from "./components/ui/Button";
+import { PlusIcon } from "./Icons/PlusIcon";
+import { ShareIcon } from "./Icons/ShareIcon";
+import { Card } from "./components/ui/Card";
 
-function App(){
-  return <div>
-    <Button startIcon={<PlusIcon/>} variant="primary" text="Add" />
-    <br />
-    <Button startIcon={<ShareIcon/>} variant="secondary" text="Share" />
-    <br />
-    <Button startIcon={<CrossIcon/>} variant="primary" text="Remove" />
-    <br />
-    <Button startIcon={<Logo/>} variant="secondary" text="Logo" />
-    <br />
-    <Button startIcon={<YoutubeIcon/>} variant="primary" text="Share on Youtube" />
-    <br />
-    <Button startIcon={<TwitterIcon/>} variant="secondary" text="Share on Twitter" />
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>;
 
-  </div>
+function App() {
+  return (
+    <div className="m-20">
+      <div className="flex space-x-3 absolute top-20 right-20 my-20">
+        <Button startIcon={<ShareIcon />} variant="secondary" text="Share Brain" />
+        <Button startIcon={<PlusIcon />} variant="primary" text="Add Content" />
+      </div>
+      <div className="flex space-x-4 max-w-full overflow-auto">
+        <Card title={"My first youtube video"} link={"https://www.youtube.com/watch?v=YQHsXMglC9A"} type="youtube" />
+        <Card title={"My first tweet"} link={"https://x.com/Mick_O_Keeffe/status/1885081000822055071"} type="twitter" />
+      </div>
+    </div>
+  );
 }
 
-export default  App 
+export default App;
